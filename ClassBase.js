@@ -40,6 +40,10 @@ class Carro {
         if(this._velocidade <= 0) return;
         this._velocidade--;
     }
+
+    static aumentaVelocidade() {
+        return velocidade = 50
+    }
 }
 
 const c1 =  new Carro('fusca')
