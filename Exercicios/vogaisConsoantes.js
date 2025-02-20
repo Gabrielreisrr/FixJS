@@ -9,5 +9,5 @@ const analisaVogais = (string) => {
     return x;
 }
 
-console.log(analisaVogais("abcdeddvb")); // "ae"
-console.log(analisaVogais("javascript")); // "aai"
+console.log(analisaVogais("abcdeddvb")); 
+console.log(analisaVogais("javascript")); 
