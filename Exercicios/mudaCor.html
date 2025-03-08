@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Cor</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            background-color: lightgray; /* Cor padrão */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <button onclick="changeColor()">Mudar Cor</button>
+
+    <script>
+        function changeColor() {
+            let box1 = document.getElementById("box1");
+            let box2 = document.getElementById("box2");
+
+            if (box1.style.backgroundColor === "red") {
+                box1.style.backgroundColor = "lightgray"; // Remove cor de box1
+                box2.style.backgroundColor = "blue"; // Muda cor de box2
+            } else if (box2.style.backgroundColor === "blue") {
+                box2.style.backgroundColor = "lightgray"; // Remove cor de box2
+                box1.style.backgroundColor = "red"; // Muda cor de box1
+            } else {
+                box1.style.backgroundColor = "red"; // Começa com box1
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -4,4 +4,4 @@ for(let i in animais)console.log(animais[i]);
 
 // ======================================
 
-for(let i of animais)console.log(animais);
+for(let i of animais)console.log(animais[i]);
