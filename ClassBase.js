@@ -22,8 +22,8 @@ class Carro {
     }
 
     set velocidade(valor) {
-        if(typeof valor !== 'number') return;
-        if(valor >= 100 || valor <= 0 ) return;
+        if (typeof valor !== 'number') return;
+        if (valor >= 100 || valor <= 0) return;
         this._velocidade = valor
     }
 
@@ -32,12 +32,12 @@ class Carro {
     }
 
     acelerar() {
-        if(this._velocidade >=100) return;
+        if (this._velocidade >= 100) return;
         this._velocidade++;
     }
 
     freiar() {
-        if(this._velocidade <= 0) return;
+        if (this._velocidade <= 0) return;
         this._velocidade--;
     }
 
@@ -46,7 +46,7 @@ class Carro {
     }
 }
 
-const c1 =  new Carro('fusca')
+const c1 = new Carro('fusca')
 
 // for(let i = 0; i <= 200; i++){
 //     c1.acelerar()

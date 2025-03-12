@@ -8,5 +8,5 @@ var twoSum = function (nums, target) {
             }
         }
     }
-    return []; // Retorna um array vazio se não encontrar pares  
+    return [];
 };
