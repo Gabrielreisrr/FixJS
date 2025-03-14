@@ -17,4 +17,7 @@ console.log(arrayToList([1, 2, 3, 4]));
 
 // Atividade 4: Também escreva uma função listToArray que produza um array a partir de uma lista.
 
-function listToArray(arr)
+function listToArray(arr) {
+
+
+}
