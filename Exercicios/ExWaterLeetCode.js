@@ -10,7 +10,6 @@ function maxArea(height) {
 
         maxWater = Math.max(maxWater, area);
 
-        // Mover o ponteiro da linha menor para tentar aumentar a área
         if (height[left] < height[right]) {
             left++;
         } else {
@@ -21,6 +20,5 @@ function maxArea(height) {
     return maxWater;
 }
 
-// Teste com exemplo
 const height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
 console.log(maxArea(height)); // Saída: 49
