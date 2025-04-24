@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>API JSONPlaceholder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, button, textarea {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background: #333;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Consumindo API JSONPlaceholder</h1>
+
+  <div class="container">
+    <h2>A. Obter lista de posts (GET)</h2>
+    <button onclick="getAllPosts()">Buscar Posts</button>
+    <pre id="all-posts"></pre>
+  </div>
+
+  <div class="container">
+    <h2>B. Obter um post por ID (GET)</h2>
+    <input type="number" id="post-id" placeholder="Digite o ID do post" />
+    <button onclick="getPostById()">Buscar Post por ID</button>
+    <pre id="post-by-id"></pre>
+  </div>
+
+  <div class="container">
+    <h2>C. Criar um novo post (POST)</h2>
+    <input type="text" id="new-title" placeholder="Título" />
+    <textarea id="new-body" placeholder="Conteúdo do post"></textarea>
+    <button onclick="createPost()">Criar Post</button>
+    <pre id="create-result"></pre>
+  </div>
+
+  <div class="container">
+    <h2>D. Atualizar o post de ID 1 (PUT)</h2>
+    <input type="text" id="update-title" placeholder="Novo Título" />
+    <textarea id="update-body" placeholder="Novo Conteúdo"></textarea>
+    <button onclick="updatePost()">Atualizar Post ID 1</button>
+    <pre id="update-result"></pre>
+  </div>
+
+  <div class="container">
+    <h2>E. Deletar o post de ID 1 (DELETE)</h2>
+    <button onclick="deletePost()">Deletar Post ID 1</button>
+    <pre id="delete-result"></pre>
+  </div>
+
+  <script>
+    const api = "https://jsonplaceholder.typicode.com/posts";
+
+    async function getAllPosts() {
+      const res = await fetch(api);
+      const data = await res.json();
+      document.getElementById("all-posts").textContent = JSON.stringify(data.slice(0, 5), null, 2); // mostra só os 5 primeiros
+    }
+
+    async function getPostById() {
+      const id = document.getElementById("post-id").value;
+      if (!id) return alert("Informe um ID!");
+      const res = await fetch(`${api}/${id}`);
+      const data = await res.json();
+      document.getElementById("post-by-id").textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function createPost() {
+      const title = document.getElementById("new-title").value;
+      const body = document.getElementById("new-body").value;
+      const res = await fetch(api, {
+        method: "POST",
+        body: JSON.stringify({ title, body, userId: 1 }),
+        headers: { "Content-Type": "application/json" }
+      });
+      const data = await res.json();
+      document.getElementById("create-result").textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function updatePost() {
+      const title = document.getElementById("update-title").value;
+      const body = document.getElementById("update-body").value;
+      const res = await fetch(`${api}/1`, {
+        method: "PUT",
+        body: JSON.stringify({ id: 1, title, body, userId: 1 }),
+        headers: { "Content-Type": "application/json" }
+      });
+      const data = await res.json();
+      document.getElementById("update-result").textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function deletePost() {
+      const res = await fetch(`${api}/1`, { method: "DELETE" });
+      document.getElementById("delete-result").textContent = "Post ID 1 deletado com sucesso!";
+    }
+  </script>
+</body>
+</html>
