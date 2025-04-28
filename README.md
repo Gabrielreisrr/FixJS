@@ -1,3 +1,3 @@
 # FixJS
 Para meu aprendizado em JS e para envio de atvs.
-General Codes to learn.
+General Codes to my learn.
